@@ -1,0 +1,31 @@
+meta {
+  name: Actualizar libro
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://api.biblioteca.com/v1/books/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+params:path {
+  id: 1
+}
+
+body:json {
+  {
+    "title": "Cien años de soledad - Edición Especial",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-0307474728",
+    "genre": "Ficción",
+    "publishYear": 1967,
+    "libraryId": 1
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-0307474728",
+    "genre": "Ficción",
+    "publishYear": 1967,
+    "libraryId": 1
+  },
+  {
+    "id": 2,
+    "title": "El túnel",
+    "author": "Ernesto Sabato",
+    "isbn": "978-8432217326",
+    "genre": "Ficción",
+    "publishYear": 1948,
+    "libraryId": 1
+  }
+]

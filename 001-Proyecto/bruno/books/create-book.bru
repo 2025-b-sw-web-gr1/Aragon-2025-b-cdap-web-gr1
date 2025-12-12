@@ -1,0 +1,27 @@
+meta {
+  name: Crear nuevo libro
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.biblioteca.com/v1/books
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "title": "Rayuela",
+    "author": "Julio Cortázar",
+    "isbn": "978-8420471945",
+    "genre": "Ficción",
+    "publishYear": 1963,
+    "libraryId": 1
+  }
+}

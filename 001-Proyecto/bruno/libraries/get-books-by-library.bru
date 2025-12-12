@@ -1,0 +1,19 @@
+meta {
+  name: Obtener libros de una biblioteca
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://api.biblioteca.com/v1/libraries/1/books
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+params:path {
+  id: 1
+}

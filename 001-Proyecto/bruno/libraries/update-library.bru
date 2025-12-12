@@ -1,0 +1,29 @@
+meta {
+  name: Actualizar biblioteca
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://api.biblioteca.com/v1/libraries/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+params:path {
+  id: 1
+}
+
+body:json {
+  {
+    "name": "Biblioteca Nacional Actualizada",
+    "address": "Nueva Av. Principal 123",
+    "city": "Quito",
+    "phone": "+593-2-1111111"
+  }
+}

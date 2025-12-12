@@ -1,0 +1,25 @@
+meta {
+  name: Crear nueva biblioteca
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.biblioteca.com/v1/libraries
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "name": "Biblioteca Central",
+    "address": "Av. 6 de Diciembre",
+    "city": "Quito",
+    "phone": "+593-2-9876543"
+  }
+}
