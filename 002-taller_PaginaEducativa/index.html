@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Avanzado de HTML5: Estructura, Semántica e Interactividad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-block {
+            background-color: #1e293b; /* gray-800 */
+            color: #e2e8f0; /* gray-200 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Contenedor principal de la demostración del Box Model */
+        .box-container {
+            border: 1px dashed #ccc;
+            background-color: #f7f7f7;
+            padding: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px; /* Altura fija para centrar la caja */
+            position: relative;
+        }
+
+        #interactiveBox {
+            background-color: #86efac; /* green-300 */
+            width: 150px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px; 
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.1); 
+        }
+
+        .margin-indicator {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            font-size: 0.8rem;
+        }
+        .margin-label { color: #f97316; } 
+        .border-label { color: #3b82f6; }
+        .padding-label { color: #22c55e; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-8">
+
+    <header class="text-center mb-12 bg-indigo-700 text-white py-8 rounded-xl shadow-lg">
+        <h1 class="text-4xl font-bold">Tutorial Avanzado: Estructura y Semántica en HTML5</h1>
+        <p class="text-indigo-200 text-lg">Elementos, Modelos de Flujo y Diseño Web Moderno</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-12">
+
+        <section class="bg-white rounded-xl shadow-xl p-8 border-l-8 border-yellow-500">
+            <h2 class="text-3xl font-bold text-yellow-700 mb-6">1. Flujo del Documento: Elementos de Bloque vs. En Línea</h2>
+            <p class="text-gray-700 mb-4">
+                La forma en que un elemento se comporta en la página es fundamental. Los elementos HTML se dividen en dos categorías principales que determinan cómo interactúan con otros elementos y cómo aplican el Modelo de Caja. 
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-100 p-5 rounded-lg border-2 border-gray-300">
+                    <h3 class="text-xl font-bold mb-3 text-indigo-600">📦 Elementos de Bloque (<code class="bg-gray-200 px-1 rounded">block</code>)</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                        <li>**Ocupan el ancho completo** disponible, iniciando siempre en una nueva línea.</li>
+                        <li>Aceptan todas las propiedades del Modelo de Caja: **`width`, `height`, `margin`, `padding`**.</li>
+                        <li>**Ejemplos:** `<p>`, `<div>`, `<h1>`, `<section>`, `<li>`.</li>
+                    </ul>
+                    <div class="code-block mt-3 text-xs">
+                        &lt;p&gt;Bloque 1&lt;/p&gt;&lt;p&gt;Bloque 2&lt;/p&gt; <span class="text-yellow-400">/* Se apilan */</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-5 rounded-lg border-2 border-gray-300">
+                    <h3 class="text-xl font-bold mb-3 text-indigo-600">🔗 Elementos En Línea (<code class="bg-gray-200 px-1 rounded">inline</code>)</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                        <li>**Ocupan solo el ancho de su contenido**, continuando en la misma línea.</li>
+                        <li>**Ignoran `width` y `height`**. Solo aceptan `padding` horizontal y `margin` horizontal.</li>
+                        <li>**Ejemplos:** `<a>`, `<span>`, `<strong>`, `<em>`, `<img>`.</li>
+                    </ul>
+                    <div class="code-block mt-3 text-xs">
+                        &lt;span&gt;Inline 1&lt;/span&gt;&lt;span&gt;Inline 2&lt;/span&gt; <span class="text-yellow-400">/* Permanecen juntos */</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-xl p-8 border-l-8 border-green-500">
+            <h2 class="text-3xl font-bold text-green-700 mb-6">2. Semántica: Estructurando Contenido con HTML5</h2>
+            <p class="text-gray-700 mb-4">
+                Las etiquetas semánticas describen el **significado** del contenido que contienen, no solo su apariencia. Esto es vital para el SEO, la accesibilidad y la legibilidad del código.
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;header&gt;</code>
+                    <p class="text-gray-700 mt-1">Contiene contenido introductorio, navegación o logo.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;nav&gt;</code>
+                    <p class="text-gray-700 mt-1">Contiene enlaces de navegación principal del sitio.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;section&gt;</code>
+                    <p class="text-gray-700 mt-1">Agrupa contenido temáticamente relacionado (ej. "Introducción").</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;article&gt;</code>
+                    <p class="text-gray-700 mt-1">Contenido independiente y autocontenido (ej. una entrada de blog).</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;aside&gt;</code>
+                    <p class="text-gray-700 mt-1">Contenido relacionado pero secundario (ej. barras laterales o anuncios).</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;main&gt;</code>
+                    <p class="text-gray-700 mt-1">Contenido principal y dominante del documento. Solo debe haber uno.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;figure&gt; & &lt;figcaption&gt;</code>
+                    <p class="text-gray-700 mt-1">Contenido autoexplicativo, como imágenes o diagramas con subtítulos.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <code class="font-bold text-lg text-green-800">&lt;footer&gt;</code>
+                    <p class="text-gray-700 mt-1">Contiene información de contacto, derechos de autor o enlaces secundarios.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-white rounded-xl shadow-xl p-8 border-l-8 border-indigo-500">
+            <h2 class="text-3xl font-bold text-indigo-700 mb-6">3. Organización de Datos: Listas y Tablas</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">📜 Listas HTML</h3>
+                    <p class="text-gray-700 mb-3">Usadas para agrupar elementos relacionados en formato de lista.</p>
+                    <div class="code-block text-sm mb-4">
+                        <span class="text-yellow-400">/* No ordenada (Bullet points) */</span><br>
+                        &lt;ul&gt;<br>
+                        &nbsp;&nbsp;&lt;li&gt;Elemento 1&lt;/li&gt;<br>
+                        &lt;/ul&gt;<br><br>
+                        <span class="text-yellow-400">/* Ordenada (Numerada) */</span><br>
+                        &lt;ol&gt;<br>
+                        &nbsp;&nbsp;&lt;li&gt;Paso 1&lt;/li&gt;<br>
+                        &lt;/ol&gt;
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">📊 Tablas HTML</h3>
+                    <p class="text-gray-700 mb-3">Usadas para datos bidimensionales (filas y columnas), NO para diseño.</p>
+                    <div class="code-block text-xs">
+                        &lt;table&gt;<br>
+                        &nbsp;&nbsp;&lt;thead&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Encabezado&lt;/th&gt;&lt;/tr&gt;<br>
+                        &nbsp;&nbsp;&lt;/thead&gt;<br>
+                        &nbsp;&nbsp;&lt;tbody&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Dato&lt;/td&gt;&lt;/tr&gt;<br>
+                        &nbsp;&nbsp;&lt;/tbody&gt;<br>
+                        &lt;/table&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-xl p-8 border-l-8 border-red-500">
+            <h2 class="text-3xl font-bold text-red-700 mb-6">4. Formularios: Recolección de Datos</h2>
+            <p class="text-gray-700 mb-4">
+                El elemento `<form>` es la puerta de entrada para la interacción del usuario. Envía datos al servidor mediante los atributos `method` (GET/POST) y `action` (URL de destino).
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-red-50 p-5 rounded-lg border border-red-300">
+                    <form action="#" method="GET">
+                        <label for="username" class="block text-gray-700 font-medium mb-1">Nombre de Usuario:</label>
+                        <input type="text" id="username" name="username" placeholder="Tu nombre" required
+                               class="border border-gray-400 p-2 rounded w-full mb-3">
+                        
+                        <label for="email" class="block text-gray-700 font-medium mb-1">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"
+                               class="border border-gray-400 p-2 rounded w-full mb-4">
+                        
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full">
+                            Enviar Datos (GET)
+                        </button>
+                    </form>
+                </div>
+
+                <div class="p-5">
+                    <h3 class="text-xl font-bold mb-3 text-red-600">Tipos Comunes de &lt;input&gt;</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>`type="text"`: Texto estándar (ejemplo: nombre).</li>
+                        <li>`type="email"`: Valida el formato de correo.</li>
+                        <li>`type="password"`: Oculta la entrada.</li>
+                        <li>`type="number"`: Solo acepta números.</li>
+                        <li>`type="checkbox"` / `type="radio"`: Opciones de selección.</li>
+                        <li>`type="submit"` / `type="button"`: Botones para enviar o acciones JS.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-2xl p-8 border-l-8 border-gray-700">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">5. Simulador Interactivo: Modelo de Caja (CSS Box Model)</h2>
+            <p class="text-gray-700 mb-6 text-lg">
+                Utiliza los controles para manipular las propiedades CSS de la caja y observa cómo afecta su tamaño y espaciado en tiempo real. 
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <div class="lg:col-span-1 bg-gray-100 rounded-lg p-6 h-fit border-t-4 border-indigo-500">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-4">⚙️ Controles CSS (en píxeles)</h3>
+                    
+                    <div class="mb-4">
+                        <label for="marginRange" class="block font-semibold mb-1 margin-label">Margen: <span id="marginValue" class="font-bold">20</span>px</label>
+                        <input type="range" id="marginRange" min="0" max="50" value="20" class="w-full h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="borderRange" class="block font-semibold mb-1 border-label">Borde: <span id="borderValue" class="font-bold">10</span>px</label>
+                        <input type="range" id="borderRange" min="0" max="20" value="10" class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="paddingRange" class="block font-semibold mb-1 padding-label">Relleno: <span id="paddingValue" class="font-bold">25</span>px</label>
+                        <input type="range" id="paddingRange" min="0" max="50" value="25" class="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <div class="box-container relative rounded-lg shadow-inner mb-6">
+                        <div id="interactiveBox" class="rounded shadow-xl border-solid border-4">
+                            CONTENT
+                        </div>
+                        <div id="marginTop" class="margin-indicator text-center margin-label top-0"></div>
+                        <div id="marginBot" class="margin-indicator text-center margin-label bottom-0"></div>
+                        <div id="marginLeft" class="margin-indicator text-center margin-label left-0 transform -rotate-90 origin-top-left"></div>
+                        <div id="marginRight" class="margin-indicator text-center margin-label right-0 transform rotate-90 origin-top-right"></div>
+                    </div>
+                    <div class="bg-gray-800 text-white p-4 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2">Código CSS generado:</h3>
+                        <pre id="cssCode" class="text-sm"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center mt-12 py-6 bg-gray-800 text-white">
+        <p class="text-gray-300">© 2025 Tutorial de HTML Avanzado | Aprende, practica, construye.</p>
+    </footer>
+
+    <script>
+        const box = document.getElementById('interactiveBox');
+        const cssCode = document.getElementById('cssCode');
+        
+        const marginRange = document.getElementById('marginRange');
+        const borderRange = document.getElementById('borderRange');
+        const paddingRange = document.getElementById('paddingRange');
+
+        const marginValue = document.getElementById('marginValue');
+        const borderValue = document.getElementById('borderValue');
+        const paddingValue = document.getElementById('paddingValue');
+        
+        const marginTopIndicator = document.getElementById('marginTop');
+        const marginBotIndicator = document.getElementById('marginBot');
+        const marginLeftIndicator = document.getElementById('marginLeft');
+        const marginRightIndicator = document.getElementById('marginRight');
+
+
+        const updateBox = () => {
+            const margin = marginRange.value + 'px';
+            const border = borderRange.value + 'px';
+            const padding = paddingRange.value + 'px';
+            
+            // 1. Actualizar los valores en la interfaz
+            marginValue.textContent = marginRange.value;
+            borderValue.textContent = borderRange.value;
+            paddingValue.textContent = paddingRange.value;
+
+            // 2. Aplicar estilos a la caja interactiva
+            box.style.margin = margin;
+            box.style.borderWidth = border;
+            box.style.padding = padding;
+            box.style.borderColor = '#3b82f6';
+
+            // 3. Generar el código CSS
+            cssCode.textContent = `
+.box {
+  width: 150px;
+  height: 100px;
+  
+  /* Valores ajustados */
+  margin: ${margin};
+  border: ${border} solid #3b82f6;
+  padding: ${padding};
+
+  box-sizing: content-box; 
+}
+            `;
+
+            // 4. Actualizar los indicadores de margen (haciendo visible el espacio)
+            const basePadding = 48; // Padding del .box-container
+            const marginPx = parseInt(marginRange.value);
+            const totalMarginWidth = basePadding - marginPx;
+
+            marginTopIndicator.style.transform = `translateY(${totalMarginWidth}px)`;
+            marginTopIndicator.textContent = marginPx > 0 ? `MARGIN: ${margin}` : '';
+            
+            marginBotIndicator.style.transform = `translateY(-${totalMarginWidth}px)`;
+            marginBotIndicator.textContent = marginPx > 0 ? `MARGIN: ${margin}` : '';
+            
+            marginLeftIndicator.style.transform = `translateX(${totalMarginWidth}px) rotate(-90deg)`;
+            marginLeftIndicator.textContent = marginPx > 0 ? `MARGIN: ${margin}` : '';
+
+            marginRightIndicator.style.transform = `translateX(-${totalMarginWidth}px) rotate(90deg)`;
+            marginRightIndicator.textContent = marginPx > 0 ? `MARGIN: ${margin}` : '';
+        };
+
+        // Escuchar los cambios en los rangos
+        marginRange.addEventListener('input', updateBox);
+        borderRange.addEventListener('input', updateBox);
+        paddingRange.addEventListener('input', updateBox);
+
+        // Inicializar la caja al cargar la página
+        updateBox(); 
+    </script>
+
+</body>
+</html>
