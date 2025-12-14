@@ -1,0 +1,33 @@
+meta {
+  name: Update Post Title (PATCH)
+  type: http
+  seq: 5
+}
+
+patch {
+  url: https://jsonplaceholder.typicode.com/posts/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Solo actualizo el título"
+  }
+}
+
+docs {
+  # Update Post Title (PATCH)
+  
+  Actualiza PARCIALMENTE un post, solo los campos especificados.
+  
+  **Método:** PATCH
+  **Endpoint:** /posts/:id
+  **Respuesta esperada:** 200 OK
+  
+  PATCH solo requiere los campos que quieres modificar.
+}
