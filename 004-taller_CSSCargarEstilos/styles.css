@@ -1,0 +1,122 @@
+/* styles.css */
+
+/* =================================
+   ESTILOS BASE (Comunes a todos)
+   ================================= */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    transition: all 0.5s;
+}
+
+.button-group {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =================================
+   MODO 1: ESTÁNDAR (CSS Externo - Por defecto)
+   ================================= */
+.standard-mode {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.standard-mode .container {
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.standard-mode h1 {
+    color: #3498db; /* Azul */
+    border-bottom: 2px solid #3498db;
+}
+
+.standard-mode .btn-standard {
+    background-color: #3498db;
+    color: white;
+}
+
+/* =================================
+   MODO 2: MINIMALISTA (Simulando CSS Interno)
+   ================================= */
+.minimalist-mode {
+    background-color: #ffffff;
+    color: #111;
+}
+
+.minimalist-mode .container {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.minimalist-mode h1 {
+    color: #2ecc71; /* Verde */
+    border-bottom: none;
+    font-weight: 300;
+}
+
+.minimalist-mode p, .minimalist-mode ul {
+    line-height: 2.0;
+    color: #555;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.minimalist-mode .btn-minimalist {
+    background-color: #2ecc71;
+    color: white;
+}
+
+/* =================================
+   MODO 3: CAÓTICO (Simulando CSS Inline)
+   ================================= */
+.chaotic-mode {
+    background-color: #f1c40f; /* Amarillo fuerte */
+    color: #c0392b; /* Rojo ladrillo */
+}
+
+.chaotic-mode .container {
+    background: #34495e; /* Azul oscuro */
+    border: 5px dashed #c0392b;
+    box-shadow: 0 0 20px #c0392b;
+    transform: rotate(1deg); /* Añadimos algo de caos */
+}
+
+.chaotic-mode h1 {
+    color: #ecf0f1; /* Blanco */
+    border-bottom: 4px solid #e74c3c;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.chaotic-mode p {
+    font-style: italic;
+    color: #ecf0f1;
+}
+
+.chaotic-mode .btn-chaotic {
+    background-color: #e74c3c;
+    color: white;
+}

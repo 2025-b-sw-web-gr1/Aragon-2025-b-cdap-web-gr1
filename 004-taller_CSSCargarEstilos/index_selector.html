@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller: Selector Dinámico de Estilos CSS</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body id="body-selector" class="standard-mode">
+
+    <div class="button-group">
+        <button class="btn btn-standard" onclick="applyMode('standard-mode')">
+            Método 1: Estilos Externos
+        </button>
+        <button class="btn btn-minimalist" onclick="applyMode('minimalist-mode')">
+            Método 2: Estilos Internos
+        </button>
+        <button class="btn btn-chaotic" onclick="applyMode('chaotic-mode')">
+            Método 3: Estilos Inline
+        </button>
+    </div>
+
+    <div class="container">
+        <h1>Demostración Interactiva de Carga de CSS</h1>
+        
+        <p>
+            Esta página tiene 3 conjuntos de estilos definidos en el archivo 
+            <code style="font-weight: bold;">styles.css</code>. Al presionar cada botón, 
+            el JavaScript cambia la clase del elemento <code>&lt;body&gt;</code>, 
+            lo que aplica un set de estilos completamente diferente de forma instantánea.
+        </p>
+        
+        <p>
+            De esta manera, se simula cómo cambiar entre las filosofías de CSS:
+        </p>
+
+        <h2 style="margin-top: 30px;">Análisis de los Métodos</h2>
+        <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 10px;">
+                <strong>Estilos Externos:</strong> Ideal para grandes proyectos. Un solo archivo CSS controla todo el diseño.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Estilos Internos:</strong> Útil cuando el CSS es específico de una sola página y no se reutilizará.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Estilos Inline:</strong> Solo para ajustes muy pequeños y puntuales. Es la peor práctica para estilos masivos.
+            </li>
+        </ul>
+        
+    </div>
+
+    <script>
+        /**
+         * Aplica la clase de estilo deseada al elemento <body>
+         * y remueve todas las demás clases de estilo definidas.
+         * @param {string} modeClass - La clase CSS a aplicar ('standard-mode', 'minimalist-mode', 'chaotic-mode').
+         */
+        function applyMode(modeClass) {
+            const body = document.getElementById('body-selector');
+            
+            // 1. Definir todas las clases de modo existentes
+            const allModes = ['standard-mode', 'minimalist-mode', 'chaotic-mode'];
+            
+            // 2. Remover todas las clases de modo
+            allModes.forEach(mode => {
+                body.classList.remove(mode);
+            });
+            
+            // 3. Aplicar la clase de modo seleccionada
+            body.classList.add(modeClass);
+            
+            console.log(`Modo de estilo cambiado a: ${modeClass}`);
+        }
+    </script>
+
+</body>
+</html>
