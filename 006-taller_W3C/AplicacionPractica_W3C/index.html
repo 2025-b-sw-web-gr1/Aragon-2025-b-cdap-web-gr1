@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio de Fauna Silvestre - W3C AA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/svg/logo_refugio.svg" type="image/svg+xml">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <object data="assets/svg/logo_refugio.svg" type="image/svg+xml" aria-label="Logo del Refugio: Silueta de Águila en vuelo"></object>
+            <span class="site-title">Refugio Silvestre</span>
+        </div>
+        
+        <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir Menú de Navegación">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav id="main-nav" class="main-nav" aria-label="Menú Principal del Sitio">
+            <ul class="nav-list">
+                <li><a href="#mision">Nuestra Misión</a></li>
+                <li><a href="#especies">Especies</a></li>
+                <li><a href="#adopcion">Adopta/Apadrina</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#" class="btn-donate" role="button">Donar Ahora</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="mision" class="hero" aria-labelledby="mision-heading">
+            <h1 id="mision-heading">Protegiendo la Vida Salvaje. Juntos.</h1>
+            <p>Trabajamos incansablemente para rehabilitar y liberar especies nativas. Tu apoyo es vital.</p>
+            <a href="#adopcion" class="btn-primary">Conoce cómo ayudar</a>
+        </section>
+
+        <section id="especies" class="species-grid" aria-labelledby="especies-heading">
+            <h2 id="especies-heading">Nuestros Residentes</h2>
+            
+            <article class="species-card" aria-labelledby="card-aguila">
+                <img src="assets/images/aguila_andina.jpg" alt="Un águila andina posada sobre una rama" loading="lazy">
+                <div class="card-body">
+                    <h3 id="card-aguila">Águila Andina</h3>
+                    <p>Rehabilitación por impacto ambiental. Lista para liberación en primavera.</p>
+                    <a href="#" aria-label="Ver ficha completa del Águila Andina">Más detalles</a>
+                </div>
+            </article>
+
+            <article class="species-card" aria-labelledby="card-zorro">
+                <img src="assets/images/zorro_gris.jpg" alt="Un zorro gris mirando directamente a la cámara" loading="lazy">
+                <div class="card-body">
+                    <h3 id="card-zorro">Zorro Gris</h3>
+                    <p>Rescatado de la caza furtiva. Necesita apadrinamiento de largo plazo.</p>
+                    <a href="#" aria-label="Ver ficha completa del Zorro Gris">Más detalles</a>
+                </div>
+            </article>
+            
+            </section>
+
+        <section id="contacto" class="contact-area" aria-labelledby="contacto-heading">
+            <h2 id="contacto-heading">Contacta y Colabora</h2>
+            
+            <div class="contact-content">
+                <form class="donation-form" aria-label="Formulario de Contacto Rápido">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje (o Monto de Donación):</label>
+                        <textarea id="mensaje"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar Mensaje / Donar</button>
+                </form>
+
+                <aside class="contact-info" aria-labelledby="info-heading">
+                    <h3 id="info-heading">¿Preguntas Rápidas?</h3>
+                    <p>Llámanos: (555) 123-4567</p>
+                    <p>Visítanos (solo con cita): Av. Bosque Nativo #100</p>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Refugio de Fauna Silvestre. Todos los derechos reservados.</p>
+        <nav class="footer-nav" aria-label="Enlaces Legales y de Accesibilidad">
+            <ul>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Declaración de Accesibilidad</a></li>
+                <li><a href="#">Mapa del Sitio</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        // Funcionalidad básica para el toggle del menú en móvil (Accesibilidad)
+        const toggleButton = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('main-nav');
+
+        toggleButton.addEventListener('click', () => {
+            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true' || false;
+            toggleButton.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('is-open'); // Agrega clase para mostrar/ocultar con CSS
+        });
+    </script>
+</body>
+</html>

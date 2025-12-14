@@ -1,0 +1,22 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true" role="img">
+    <title>Silueta de Águila del Refugio</title>
+    <style>
+        /* CSS para animación simple de la punta del ala */
+        .wing-tip {
+            animation: flap 2s infinite ease-in-out alternate;
+            transform-origin: 80% 50%; /* Punto de pivote para la animación */
+        }
+        
+        @keyframes flap {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(5deg); }
+        }
+    </style>
+    
+    <path fill="#F0F0F0" class="wing-tip" d="M 50,20 L 70,40 L 90,40 L 80,60 L 50,60 L 20,60 L 10,40 L 30,40 Z"/>
+    
+    <circle fill="#F0F0F0" cx="50" cy="30" r="10"/>
+    
+    <circle fill="#1A5319" cx="50" cy="30" r="2"/>
+
+</svg>
