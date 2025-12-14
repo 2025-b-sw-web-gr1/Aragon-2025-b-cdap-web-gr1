@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller: Motor de Renderización</title>
+    
+    <link rel="stylesheet" href="styles_render.css">
+</head>
+<body id="body-selector">
+
+    <div class="render-container">
+        
+        <div class="button-group">
+            <button id="prev-btn" class="btn" disabled>
+                Fase Anterior
+            </button>
+            <button id="next-btn" class="btn">
+                Siguiente Fase
+            </button>
+            <button id="theme-toggle" class="btn" style="background-color: #9b59b6;">
+                🌓 Tema Oscuro
+            </button>
+        </div>
+
+        <h1 id="phase-title" class="phase-title"></h1>
+        <p id="phase-description"></p>
+
+        <h2 style="margin-top: 30px; color: #3498db;">Estructura de la Fase:</h2>
+        <pre id="diagram-area"></pre>
+
+    </div>
+    
+    <script src="data.js"></script>
+
+    <script>
+        // Variables globales
+        let currentPhase = 0;
+        const totalPhases = 5; // De 0 a 5
+
+        // Inicializar
+        const phaseTitle = document.getElementById('phase-title');
+        const phaseDescription = document.getElementById('phase-description');
+        const diagramArea = document.getElementById('diagram-area');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const body = document.getElementById('body-selector');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        /**
+         * Actualiza el contenido de la página para la fase actual
+         */
+        function updatePhaseContent() {
+            const data = RENDER_DATA[currentPhase];
+
+            // 1. Actualizar el título y la descripción
+            phaseTitle.textContent = data.title;
+            phaseDescription.textContent = data.description;
+            
+            // 2. Insertar el diagrama (usamos innerHTML para permitir etiquetas span/clases)
+            diagramArea.innerHTML = data.diagram;
+
+            // 3. Actualizar el texto del botón de avance
+            nextBtn.textContent = data.nextButton;
+
+            // 4. Habilitar/Deshabilitar botones
+            prevBtn.disabled = (currentPhase === 0);
+            nextBtn.disabled = false; // El último botón es "Reiniciar"
+            
+            if (currentPhase === totalPhases) {
+                 // Estilo especial para la última fase (reiniciar)
+                nextBtn.style.backgroundColor = '#2ecc71'; // Verde
+            } else {
+                nextBtn.style.backgroundColor = '#3498db'; // Azul
+            }
+        }
+
+        /**
+         * Maneja el cambio de fase al hacer clic en Siguiente.
+         */
+        function nextPhase() {
+            if (currentPhase < totalPhases) {
+                currentPhase++;
+            } else {
+                // Si es la última fase, reinicia
+                currentPhase = 0;
+            }
+            updatePhaseContent();
+            
+            // Simular un diagrama relevante a la fase actual
+            const diagramMap = {
+                1: "DOM Tree Structure",
+                2: "CSS Object Model (CSSOM)",
+                3: "Render Tree Composition",
+                4: "Browser Reflow/Layout Process",
+                5: "Browser Painting Layers"
+            };
+            
+            if (diagramMap[currentPhase]) {
+                triggerDiagram(diagramMap[currentPhase]);
+            }
+        }
+
+        /**
+         * Maneja el cambio de fase al hacer clic en Anterior.
+         */
+        function prevPhase() {
+            if (currentPhase > 0) {
+                currentPhase--;
+                updatePhaseContent();
+            }
+        }
+
+        /**
+         * Alterna el tema Oscuro/Claro
+         */
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('renderTheme', isDark ? 'dark' : 'light');
+            themeToggleBtn.textContent = isDark ? '💡 Tema Claro' : '🌓 Tema Oscuro';
+        }
+
+        /**
+         * Inicializa el tema al cargar la página
+         */
+        function initTheme() {
+            const savedTheme = localStorage.getItem('renderTheme') || 'light';
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggleBtn.textContent = '💡 Tema Claro';
+            }
+        }
+
+        /**
+         * Función para simular el trigger de diagrama
+         */
+        function triggerDiagram(concept) {
+            // Este es el punto donde insertarías el tag de imagen para el LLM
+            console.log(``);
+        }
+
+        // =================================
+        // EVENT LISTENERS
+        // =================================
+        nextBtn.addEventListener('click', nextPhase);
+        prevBtn.addEventListener('click', prevPhase);
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Inicialización
+        initTheme();
+        updatePhaseContent();
+    </script>
+</body>
+</html>
