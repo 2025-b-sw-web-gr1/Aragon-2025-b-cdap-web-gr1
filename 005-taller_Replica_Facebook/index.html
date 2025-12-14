@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Replica | Feed Principal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para el Box Shadow y la barra superior */
+        .fb-header-shadow { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+        .dark .fb-header-shadow { box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1); }
+        .fb-fixed-top { position: sticky; top: 0; }
+        
+        /* Opcional: Iconos SVG de Facebook */
+        .icon { fill: currentColor; width: 24px; height: 24px; }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+
+    <header class="fb-header-shadow bg-white dark:bg-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-14">
+            <div class="flex items-center">
+                <span class="text-3xl font-bold text-blue-600 mr-4">fbook</span>
+                <input type="text" placeholder="Buscar en Facebook" 
+                       class="hidden md:block bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-sm w-64 border-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <nav class="hidden sm:flex space-x-2">
+                <a href="index.html" class="nav-link p-2 mx-2 border-b-2 border-transparent hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200" data-route="feed">
+                    <svg class="icon text-gray-600 dark:text-gray-300" viewBox="0 0 24 24"><path d="M12 1.9c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18.2c-4.57 0-8.2-3.73-8.2-8.2s3.73-8.2 8.2-8.2 8.2 3.73 8.2 8.2-3.73 8.2-8.2 8.2z"/><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8.2c-1.76 0-3.2-1.44-3.2-3.2s1.44-3.2 3.2-3.2 3.2 1.44 3.2 3.2-1.44 3.2-3.2 3.2z"/></svg>
+                </a>
+                <a href="perfil.html" class="nav-link p-2 mx-2 border-b-2 border-transparent hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200" data-route="profile">
+                    <svg class="icon text-gray-600 dark:text-gray-300" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.38 0 2.5 1.12 2.5 2.5S13.38 10 12 10 9.5 8.88 9.5 7.5 10.62 5 12 5zm-5 13.5v-1c0-2.03 4.07-3.1 7-3.1s7 1.07 7 3.1v1H7z"/></svg>
+                </a>
+                <button id="theme-toggle" class="p-2 ml-4 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300">
+                    🌓
+                </button>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <div class="hidden sm:block text-sm font-semibold text-gray-800 dark:text-white">Bruno</div>
+                <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold">B</div>
+            </div>
+        </div>
+    </header>
+
+    <main id="content-area" class="max-w-7xl mx-auto pt-4 pb-20 px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        
+        <aside class="col-span-1 hidden lg:block fb-fixed-top pt-4 self-start">
+            <h2 class="font-bold text-lg mb-4 text-gray-900 dark:text-white">Menú Principal</h2>
+            <nav class="space-y-3">
+                <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
+                    <div class="h-6 w-6 rounded-full bg-red-500"></div>
+                    <span class="text-sm">Noticias (Feed)</span>
+                </div>
+                <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
+                    <div class="h-6 w-6 rounded-full bg-blue-500"></div>
+                    <span class="text-sm">Amigos</span>
+                </div>
+                <a href="perfil.html" class="nav-link flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200" data-route="profile">
+                    <div class="h-6 w-6 rounded-full bg-yellow-500"></div>
+                    <span class="text-sm">Perfil (Mi Página)</span>
+                </a>
+            </nav>
+        </aside>
+
+        <section class="col-span-4 lg:col-span-4 mx-auto w-full md:px-4">
+            
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Tu Feed</h1>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-6">
+                <div class="flex items-center space-x-3 border-b pb-3 border-gray-200 dark:border-gray-700">
+                    <div class="h-10 w-10 rounded-full bg-blue-500 flex-shrink-0"></div>
+                    <input type="text" placeholder="¿Qué estás pensando, Bruno?" class="flex-grow bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-sm border-none focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-gray-900 transition duration-150">
+                </div>
+                <div class="flex justify-around pt-3">
+                    <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-400 hover:text-red-500 transition duration-150">
+                        <span class="text-xl">📹</span>
+                        <span class="text-sm font-semibold hidden sm:block">Video en vivo</span>
+                    </button>
+                    <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-400 hover:text-green-500 transition duration-150">
+                        <span class="text-xl">🖼️</span>
+                        <span class="text-sm font-semibold hidden sm:block">Foto/video</span>
+                    </button>
+                    <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition duration-150">
+                        <span class="text-xl">😊</span>
+                        <span class="text-sm font-semibold hidden sm:block">Sentimiento/Actividad</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md mb-6">
+                <div class="flex items-center p-4 space-x-3">
+                    <div class="h-10 w-10 rounded-full bg-red-400 flex-shrink-0"></div>
+                    <div>
+                        <p class="font-bold text-sm text-gray-900 dark:text-white">Comunidad Web Dev</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Hace 3 horas · 🌎</p>
+                    </div>
+                </div>
+                <p class="px-4 pb-3 text-gray-800 dark:text-gray-200 text-sm">
+                    ¡Terminando la maquetación del proyecto de réplica de Facebook! El uso de CSS Grid para las tres columnas fue un salvavidas. Nunca subestimen el poder de la estructura semántica en HTML5. 💻🚀
+                </p>
+                <div class="h-64 bg-gray-200 dark:bg-gray-700"></div> 
+                
+                <div class="p-4">
+                    <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <p>👍❤️ 1.2K</p>
+                        <p>150 comentarios · 32 veces compartido</p>
+                    </div>
+                    <div class="flex justify-around pt-2 text-gray-600 dark:text-gray-300 font-semibold">
+                        <button class="flex items-center space-x-1 hover:text-blue-500 dark:hover:text-blue-400 p-2 rounded-lg transition duration-150">👍 Me Gusta</button>
+                        <button class="flex items-center space-x-1 hover:text-blue-500 dark:hover:text-blue-400 p-2 rounded-lg transition duration-150">💬 Comentar</button>
+                        <button class="flex items-center space-x-1 hover:text-blue-500 dark:hover:text-blue-400 p-2 rounded-lg transition duration-150">📤 Compartir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                Fin del Feed.
+            </div>
+
+        </section>
+
+        <aside class="col-span-1 hidden xl:block fb-fixed-top pt-4 self-start">
+            <h2 class="font-bold text-lg mb-4 text-gray-900 dark:text-white">Contactos</h2>
+            <div class="space-y-3 text-sm">
+                <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg cursor-pointer">
+                    <div class="h-6 w-6 rounded-full bg-green-500 border-2 border-white dark:border-gray-900"></div>
+                    <span>Ana Fernández</span>
+                </div>
+                <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg cursor-pointer">
+                    <div class="h-6 w-6 rounded-full bg-green-500 border-2 border-white dark:border-gray-900"></div>
+                    <span>El Profeta del Código</span>
+                </div>
+                <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-lg cursor-pointer">
+                    <div class="h-6 w-6 rounded-full bg-green-500 border-2 border-white dark:border-gray-900"></div>
+                    <span>Javier Marketing</span>
+                </div>
+            </div>
+            
+            <hr class="my-6 border-gray-200 dark:border-gray-700">
+            
+            <h2 class="font-bold text-lg mb-4 text-gray-900 dark:text-white">Anuncios</h2>
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Anuncio</p>
+                <p class="text-sm font-semibold text-gray-800 dark:text-white">¡Domina la Maquetación con CSS Grid!</p>
+                <div class="h-24 bg-purple-200 mt-2 rounded"></div>
+            </div>
+        </aside>
+
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html>
