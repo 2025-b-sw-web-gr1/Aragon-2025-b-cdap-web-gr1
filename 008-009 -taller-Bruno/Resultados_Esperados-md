@@ -1,0 +1,516 @@
+# 📊 RESULTADOS ESPERADOS 
+
+## 1. GET /posts - Obtener todos los posts
+
+### Petición
+```http
+GET https://jsonplaceholder.typicode.com/posts
+```
+
+### Respuesta
+```json
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "qui est esse",
+    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+  }
+  // ... 98 posts más
+]
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 2. GET /posts/1 - Obtener post por ID
+
+### Petición
+```http
+GET https://jsonplaceholder.typicode.com/posts/1
+```
+
+### Respuesta
+```json
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 3. POST /posts - Crear nuevo post
+
+### Petición
+```http
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+  "title": "foo",
+  "body": "bar",
+  "userId": 1
+}
+```
+
+### Respuesta
+```json
+{
+  "title": "foo",
+  "body": "bar",
+  "userId": 1,
+  "id": 101
+}
+```
+
+### Status Code
+```
+201 Created
+```
+
+---
+
+## 4. PUT /posts/1 - Actualizar post completo
+
+### Petición
+```http
+PUT https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "foo",
+  "body": "bar",
+  "userId": 1
+}
+```
+
+### Respuesta
+```json
+{
+  "id": 1,
+  "title": "foo",
+  "body": "bar",
+  "userId": 1
+}
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 5. PATCH /posts/1 - Actualizar parcialmente
+
+### Petición
+```http
+PATCH https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+  "title": "updated title"
+}
+```
+
+### Respuesta
+```json
+{
+  "userId": 1,
+  "id": 1,
+  "title": "updated title",
+  "body": "quia et suscipit\nsuscipit recusandae..."
+}
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 6. DELETE /posts/1 - Eliminar post
+
+### Petición
+```http
+DELETE https://jsonplaceholder.typicode.com/posts/1
+```
+
+### Respuesta
+```json
+{}
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 7. GET /comments?postId=1 - Comentarios por post
+
+### Petición
+```http
+GET https://jsonplaceholder.typicode.com/comments?postId=1
+```
+
+### Respuesta
+```json
+[
+  {
+    "postId": 1,
+    "id": 1,
+    "name": "id labore ex et quam laborum",
+    "email": "Eliseo@gardner.biz",
+    "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+  },
+  {
+    "postId": 1,
+    "id": 2,
+    "name": "quo vero reiciendis velit similique earum",
+    "email": "Jayne_Kuhic@sydney.com",
+    "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
+  }
+  // ... más comentarios del post 1
+]
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 8. GET /users/1 - Obtener usuario por ID
+
+### Petición
+```http
+GET https://jsonplaceholder.typicode.com/users/1
+```
+
+### Respuesta
+```json
+{
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz",
+  "address": {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-37.3159",
+      "lng": "81.1496"
+    }
+  },
+  "phone": "1-770-736-8031 x56442",
+  "website": "hildegard.org",
+  "company": {
+    "name": "Romaguera-Crona",
+    "catchPhrase": "Multi-layered client-server neural-net",
+    "bs": "harness real-time e-markets"
+  }
+}
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 9. GET /todos - Obtener todas las tareas
+
+### Petición
+```http
+GET https://jsonplaceholder.typicode.com/todos
+```
+
+### Respuesta
+```json
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "quis ut nam facilis et officia qui",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 3,
+    "title": "fugiat veniam minus",
+    "completed": false
+  }
+  // ... 197 tareas más
+]
+```
+
+### Status Code
+```
+200 OK
+```
+
+---
+
+## 10. POST /todos - Crear nueva tarea
+
+### Petición
+```http
+POST https://jsonplaceholder.typicode.com/todos
+Content-Type: application/json
+
+{
+  "title": "Buy milk",
+  "completed": false,
+  "userId": 1
+}
+```
+
+### Respuesta
+```json
+{
+  "title": "Buy milk",
+  "completed": false,
+  "userId": 1,
+  "id": 201
+}
+```
+
+### Status Code
+```
+201 Created
+```
+
+---
+
+## 📋 Estructura de Datos por Recurso
+
+### Post
+```json
+{
+  "userId": number,
+  "id": number,
+  "title": string,
+  "body": string
+}
+```
+
+### Comment
+```json
+{
+  "postId": number,
+  "id": number,
+  "name": string,
+  "email": string,
+  "body": string
+}
+```
+
+### Album
+```json
+{
+  "userId": number,
+  "id": number,
+  "title": string
+}
+```
+
+### Photo
+```json
+{
+  "albumId": number,
+  "id": number,
+  "title": string,
+  "url": string,
+  "thumbnailUrl": string
+}
+```
+
+### Todo
+```json
+{
+  "userId": number,
+  "id": number,
+  "title": string,
+  "completed": boolean
+}
+```
+
+### User
+```json
+{
+  "id": number,
+  "name": string,
+  "username": string,
+  "email": string,
+  "address": {
+    "street": string,
+    "suite": string,
+    "city": string,
+    "zipcode": string,
+    "geo": {
+      "lat": string,
+      "lng": string
+    }
+  },
+  "phone": string,
+  "website": string,
+  "company": {
+    "name": string,
+    "catchPhrase": string,
+    "bs": string
+  }
+}
+```
+
+---
+
+## 🔍 Casos de Error Comunes
+
+### Error 404 - Recurso No Encontrado
+
+#### Petición
+```http
+GET https://jsonplaceholder.typicode.com/posts/999999
+```
+
+#### Respuesta
+```json
+{}
+```
+
+#### Status Code
+```
+404 Not Found
+```
+
+---
+
+### Error 400 - Bad Request (simulado)
+
+Aunque JSONPlaceholder no valida estrictamente, un servidor real devolvería:
+
+#### Petición Inválida
+```http
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+  "invalid": "data"
+}
+```
+
+#### Respuesta Esperada (servidor real)
+```json
+{
+  "error": "Bad Request",
+  "message": "Missing required fields: title, body, userId"
+}
+```
+
+#### Status Code
+```
+400 Bad Request
+```
+
+---
+
+## 📊 Comparación de Métodos
+
+| Método | Acción | Body | Response | Status |
+|--------|--------|------|----------|--------|
+| **GET** | Leer | ❌ No | ✅ Datos | 200 |
+| **POST** | Crear | ✅ Sí | ✅ Recurso creado | 201 |
+| **PUT** | Actualizar completo | ✅ Sí (completo) | ✅ Recurso actualizado | 200 |
+| **PATCH** | Actualizar parcial | ✅ Sí (parcial) | ✅ Recurso actualizado | 200 |
+| **DELETE** | Eliminar | ❌ No | ✅ Vacío {} | 200 |
+
+---
+
+## 🎯 Tips para Interpretar Respuestas
+
+### 1. Status Code es lo primero
+- **2xx** = Éxito ✅
+- **4xx** = Error tuyo ❌
+- **5xx** = Error del servidor 💥
+
+### 2. Headers importantes
+```http
+Content-Type: application/json; charset=utf-8
+X-Powered-By: Express
+Date: Mon, 11 Nov 2024 12:00:00 GMT
+```
+
+### 3. Response Time
+- **< 100ms** = Excelente 🚀
+- **100-500ms** = Bueno ✅
+- **> 1000ms** = Lento 🐌
+
+### 4. Response Size
+```
+GET /posts      → ~15-20 KB
+GET /photos     → ~500-600 KB (¡muchas fotos!)
+POST /posts     → ~100-200 bytes
+```
+
+---
+
+## 💡 Ejercicios con las Respuestas
+
+### Ejercicio 1: Contar Recursos
+```
+1. Ejecuta GET /posts
+2. Cuenta cuántos posts hay (deberían ser 100)
+3. Encuentra el post con el título más largo
+```
+
+### Ejercicio 2: Relaciones
+```
+1. Ejecuta GET /users/1
+2. Anota el nombre del usuario
+3. Ejecuta GET /posts?userId=1
+4. Cuenta cuántos posts tiene ese usuario
+```
+
+### Ejercicio 3: Validar Creación
+```
+1. Ejecuta POST /posts con tu propio contenido
+2. Anota el ID devuelto (debería ser 101)
+3. Intenta GET /posts/101
+4. Observa que no existe (es simulado)
+```
+
+---
+
+¡Usa estos ejemplos como referencia al probar las peticiones! 📚

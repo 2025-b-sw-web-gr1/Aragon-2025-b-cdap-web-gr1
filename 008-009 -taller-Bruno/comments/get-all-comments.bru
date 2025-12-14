@@ -1,0 +1,23 @@
+meta {
+  name: Get All Comments
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/comments
+  body: none
+  auth: none
+}
+
+docs {
+  # Get All Comments
+  
+  Obtiene todos los comentarios disponibles.
+  
+  **Método:** GET
+  **Endpoint:** /comments
+  **Respuesta esperada:** 200 OK
+  
+  Retorna un array con 500 comentarios.
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Get All Todos
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/todos
+  body: none
+  auth: none
+}
+
+docs {
+  # Get All Todos
+  
+  Obtiene todas las tareas disponibles.
+  
+  **Método:** GET
+  **Endpoint:** /todos
+  **Respuesta esperada:** 200 OK
+}

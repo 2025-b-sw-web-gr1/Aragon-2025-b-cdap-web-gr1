@@ -1,0 +1,33 @@
+meta {
+  name: Create Todo
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://jsonplaceholder.typicode.com/todos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Completar el taller de Bruno",
+    "completed": false,
+    "userId": 1
+  }
+}
+
+docs {
+  # Create Todo
+  
+  Crea una nueva tarea.
+  
+  **Método:** POST
+  **Endpoint:** /todos
+  **Respuesta esperada:** 201 Created
+}

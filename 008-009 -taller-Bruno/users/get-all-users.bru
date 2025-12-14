@@ -1,0 +1,21 @@
+meta {
+  name: Get All Users
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/users
+  body: none
+  auth: none
+}
+
+docs {
+  # Get All Users
+  
+  Obtiene todos los usuarios del sistema.
+  
+  **Método:** GET
+  **Endpoint:** /users
+  **Respuesta esperada:** 200 OK
+}
