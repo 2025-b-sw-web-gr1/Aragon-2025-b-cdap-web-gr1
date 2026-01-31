@@ -1,0 +1,252 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║              🚀 INICIO RÁPIDO - PROYECTO 001 🚀                ║
+║                                                                ║
+║           API RESTful con Swagger/OpenAPI en NestJS            ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                    PASO 1: INSTALAR                         ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Abre una terminal en la carpeta Proyecto-001 y ejecuta:
+
+   npm install
+
+Esto instalará:
+   • @nestjs/core, @nestjs/common
+   • @nestjs/swagger (NUEVO!)
+   • swagger-ui-express (NUEVO!)
+   • @nestjs/typeorm, typeorm
+   • sqlite3
+   • class-validator, class-transformer
+   • Más dependencias de desarrollo
+
+⏱️  Espera 2-5 minutos hasta que termine.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                    PASO 2: INICIAR SERVIDOR                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+En la misma terminal, ejecuta:
+
+   npm run start:dev
+
+Verás algo como:
+
+   [Nest] 1234  - 01/31/2026, 3:00:00 PM     LOG [NestFactory] Starting Nest application...
+   [Nest] 1234  - 01/31/2026, 3:00:01 PM     LOG [InstanceLoader] TypeOrmModule dependencies initialized +50ms
+   [Nest] 1234  - 01/31/2026, 3:00:02 PM     LOG [InstanceLoader] TeamsModule dependencies initialized +2ms
+   [Nest] 1234  - 01/31/2026, 3:00:02 PM     LOG [InstanceLoader] PlayersModule dependencies initialized +1ms
+   🚀 Aplicación corriendo en http://localhost:3000
+   📚 Documentación Swagger disponible en http://localhost:3000/api
+
+✅ El servidor está corriendo.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                  PASO 3: ABRIR SWAGGER UI                  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Abre tu navegador y ve a:
+
+   http://localhost:3000/api
+
+Deberías ver:
+
+   📋 Teams & Players API
+   
+   Una lista de todos los endpoints:
+   
+   TEAMS
+   ├─ POST   /teams              Crear un nuevo equipo
+   ├─ GET    /teams              Obtener todos los equipos
+   ├─ GET    /teams/:id          Obtener un equipo por ID
+   ├─ PUT    /teams/:id          Actualizar un equipo
+   ├─ DELETE /teams/:id          Eliminar un equipo
+   └─ GET    /teams/:id/players  Obtener jugadores del equipo
+
+   PLAYERS
+   ├─ POST   /players            Crear un nuevo jugador
+   ├─ GET    /players            Obtener todos los jugadores
+   ├─ GET    /players/:id        Obtener un jugador por ID
+   ├─ PUT    /players/:id        Actualizar un jugador
+   └─ DELETE /players/:id        Eliminar un jugador
+
+   HEALTH
+   └─ GET    /                   Health Check
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                   PASO 4: PROBAR UN ENDPOINT                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+1. Haz clic en "POST /teams" (Crear un nuevo equipo)
+   
+   Se expande la sección y ves:
+   
+   Crear un nuevo equipo
+   Crea un nuevo equipo en la base de datos
+   
+   Request body
+   {
+     "name": "string",
+     "country": "string"
+   }
+
+2. Haz clic en "Try it out"
+   
+   Los campos se vuelven editables:
+   
+   ✓ name: _________________
+   ✓ country: ______________
+
+3. Completa los datos:
+   
+   ✓ name: Manchester United
+   ✓ country: Inglaterra
+
+4. Haz clic en "Execute"
+   
+   La API ejecuta el request y verás:
+   
+   Code: 201
+   Response body
+   {
+     "id": 1,
+     "name": "Manchester United",
+     "country": "Inglaterra",
+     "players": []
+   }
+
+5. Verifica los otros endpoints de la misma forma
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                   ¡YA ESTÁ! AHORA PRUEBA:                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+1. Crea 2 equipos:
+   POST /teams
+   ├─ {"name": "Barcelona", "country": "España"}
+   └─ {"name": "Real Madrid", "country": "España"}
+
+2. Crea 3 jugadores:
+   POST /players
+   ├─ {"name": "Messi", "position": "Delantero", "teamId": 1}
+   ├─ {"name": "Piqué", "position": "Defensa", "teamId": 1}
+   └─ {"name": "Modric", "position": "Centrocampista", "teamId": 2}
+
+3. Lista los datos:
+   GET /teams         ← Ver todos los equipos
+   GET /players       ← Ver todos los jugadores
+   GET /teams/1       ← Ver equipo 1 con jugadores
+   GET /teams/1/players ← Ver jugadores del equipo 1
+
+4. Actualiza:
+   PUT /teams/1       ← Cambiar nombre del equipo
+   PUT /players/1     ← Cambiar posición del jugador
+
+5. Elimina:
+   DELETE /players/1  ← Eliminar un jugador
+   DELETE /teams/1    ← Eliminar equipo (y jugadores)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                   OTROS COMANDOS ÚTILES                    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Mientras el servidor está corriendo:
+
+   npm run build           ← Compilar a JavaScript
+   npm run lint            ← Verificar código
+   npm run format          ← Formatear código
+   npm run test            ← Ejecutar tests
+
+Para detener el servidor:
+
+   Presiona Ctrl + C en la terminal
+
+Para ver la consola del servidor nuevamente:
+
+   npm run start:dev       ← Lo vuelves a iniciar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                    ARCHIVOS ÚTILES PARA LEER                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+1. ⭐ LEEME.md         ← Resumen visual (2 min)
+2. 📘 README.md        ← Documentación completa (10 min)
+3. 🧪 EJEMPLOS.md      ← Ejemplos de requests (5 min)
+4. 📊 STATUS.md        ← Estado de implementación (5 min)
+
+Leer después de probar:
+
+5. 🏗️ ESTRUCTURA.txt    ← Árbol de carpetas
+6. 🗺️ GUIA_PROYECTO.md  ← Cambios vs examen
+7. ✅ CHECKLIST.txt     ← Verificación
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                   ¿QUÉ SI ALGO FALLA?                     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+❌ "npm: command not found"
+   → Instala Node.js desde nodejs.org
+
+❌ "No se puede conectar a localhost:3000"
+   → Asegúrate que npm run start:dev está corriendo
+   → Revisa que no hay otro proceso usando puerto 3000
+
+❌ "Swagger no carga (http://localhost:3000/api)"
+   → Espera 5 segundos más (está compilando)
+   → Recarga la página (F5)
+   → Revisa en consola que no hay errores
+
+❌ "Error de validación en POST"
+   → Revisar el README.md para ver qué campos son requeridos
+   → Los campos son case-sensitive
+
+❌ "Base de datos vacía"
+   → Es normal, debes crear los datos con POST
+   → Los datos se guardan en database.sqlite
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                  RESUMEN DE LOS 3 PASOS                    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+   ┌─────────────────────────────────────────────────────┐
+   │  npm install                                        │
+   │  ↓                                                  │
+   │  npm run start:dev                                  │
+   │  ↓                                                  │
+   │  http://localhost:3000/api                          │
+   │  ↓                                                  │
+   │  ¡Prueba los endpoints!                             │
+   └─────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                      ¡BIENVENIDO!                          ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+   El proyecto está 100% listo para usar.
+   No necesitas cambiar nada.
+   Solo sigue los 3 pasos de arriba.
+
+   ¡Disfruta aprendiendo Swagger! 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
